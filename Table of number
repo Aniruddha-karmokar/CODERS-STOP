@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="check.jsp" method="post" onsubmit="return func()">
+        <label>Enter the lower limit: </label>
+        <input type="text" id="num1" name="num1">
+        <br>
+        <br>
+        <label>Enter the upper limit: </label>
+        <input type="text" id="num2" name="num2">
+        <br>
+        <br>
+        <input type="submit" value="Submit">
+        <input type="reset" value="Clear">
+        <br>
+        <br>
+    </form>
+    <script>
+        function func()
+        {
+            let a=document.getElementById("num1").value;
+            let b=document.getElementById("num2").value;
+            if(isNaN(a)||isNaN(b)||a==""||b=="")
+            {
+                alert("Either values are null or not a number");
+                if(a>b)
+                {
+                alert("Enter smaller number in the first text box");
+                return false;
+                }
+            }
+        }
+    </script>
+    <%! String str; int i,l,h;%>
+    <%       
+            i=0;
+            str="";
+            if((request.getParameter("num1")!=null) && (request.getParameter("num2")!=null))
+            {
+                l = Integer.parseInt(request.getParameter("num1"));
+                h = Integer.parseInt(request.getParameter("num2"));
+               str="<table border=1><tr><td>Number</td><td>Square</td><td>Cube</td></tr>";
+               
+                for(i=l;i<=h;i++)
+                {
+                    str +="<tr> <td>"+i+"</td><td>"+(i*i)+"</td><td>"+(i*i*i)+"</td></tr>";
+                }
+                str +="</table>";
+            } 
+            out.println(str);
+    %>
+</body>
+</html>
