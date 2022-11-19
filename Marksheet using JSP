@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Result</title>
+    </head>
+    
+    <body>
+        <%
+        
+            String name=request.getParameter("name");
+            String roll=request.getParameter("roll");
+            String cls=request.getParameter("cls");
+            int math=Integer.parseInt(request.getParameter("math"));
+            int phys=Integer.parseInt(request.getParameter("phys"));
+            int cs=Integer.parseInt(request.getParameter("cs"));
+            int chem=Integer.parseInt(request.getParameter("chem"));
+            int beng=Integer.parseInt(request.getParameter("beng"));
+              
+            int c=math+phys+cs+chem+beng;
+            double avg=c/5;
+            String grade;
+            if(avg > 80 )
+            {
+                grade="A";
+            }
+            else if (avg >= 60) 
+            {
+              grade="B";
+            } 
+            else if (avg >= 40)
+            {
+               grade="C";
+            }else 
+            {
+                grade="F";
+            }
+       %>
+       <br>
+       <br>
+       <br>
+       <br>
+       <p align=center>
+        <font style="bold" SIZE="15">RESULT</font>
+       </p>
+       <table border="1" align=center>
+        <tr>
+         
+            <td>Name</td>
+            <td>Roll</td>
+            <td>Class</td>
+            <td>Math</td>
+            <td>Physics</td>
+            <td>Computer Science</td>
+            <td>Chemistry</td>
+            <td>Bengali</td>
+            <td>Total</td>
+            <td>Percentage</td>
+            <td>Grade</td>
+           
+            </tr>
+            <tr>
+          
+            <td><% out.println(name);  %></td>
+            <td><% out.println(roll);  %></td>
+             <td><% out.println(cls);  %></td>
+              <td><% out.println(math);  %></td>
+              <td><% out.println(phys);  %></td>
+              <td><% out.println(cs);  %></td>
+              <td><% out.println(chem);  %></td>
+              <td><% out.println(beng);  %></td>
+              <td><% out.println(c);  %></td>
+              <td><% out.println(avg+"%");  %></td>
+              <td><% out.println(grade);  %></td>
+            </tr>
+        </table>
+    </body>
+
+</html>
